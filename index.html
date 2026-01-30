@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a126f5d9342a811f53c4aa2478d4574f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 250px; height: 180px; 
+     background-color: white; border:2px solid grey; z-index:9999; 
+     font-size:14px; padding: 10px;
+     border-radius: 5px;
+     box-shadow: 3px 3px 5px grey;">
+     
+     <h4 style="margin-top: 0; margin-bottom: 10px;">立法类型分类图例</h4>
+     <div style="display: flex; align-items: center; margin-bottom: 5px;">
+         <div style="width: 20px; height: 20px; background-color: #D2B48C; 
+              margin-right: 10px; border: 1px solid black;"></div>
+         <span>烟草相关产品</span>
+     </div>
+     <div style="display: flex; align-items: center; margin-bottom: 5px;">
+         <div style="width: 20px; height: 20px; background-color: #90EE90; 
+              margin-right: 10px; border: 1px solid black;"></div>
+         <span>消费品</span>
+     </div>
+     <div style="display: flex; align-items: center; margin-bottom: 5px;">
+         <div style="width: 20px; height: 20px; background-color: #FFFF00; 
+              margin-right: 10px; border: 1px solid black;"></div>
+         <span>医药制品</span>
+     </div>
+     <div style="display: flex; align-items: center; margin-bottom: 5px;">
+         <div style="width: 20px; height: 20px; background-color: #9370DB; 
+              margin-right: 10px; border: 1px solid black;"></div>
+         <span>不明确</span>
+     </div>
+     <hr style="margin: 10px 0;">
+     <p style="font-size: 12px; margin: 0;">点击地图查看详细信息</p>
+</div>
+    
+<div style="position: fixed; 
+     top: 10px; left: 50%; transform: translateX(-50%);
+     background-color: white; border:2px solid grey; z-index:9999; 
+     font-size:16px; padding: 10px 20px;
+     border-radius: 5px;
+     box-shadow: 3px 3px 5px grey;">
+     <strong>阿尔巴尼亚电子烟法律分类地图</strong>
+</div>
+    
+            <div class="folium-map" id="map_a126f5d9342a811f53c4aa2478d4574f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a126f5d9342a811f53c4aa2478d4574f = L.map(
+                "map_a126f5d9342a811f53c4aa2478d4574f",
+                {
+                    center: [41.1533, 20.1683],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b38adcfcb06f6a62248f5ac0bde1b253 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b38adcfcb06f6a62248f5ac0bde1b253.addTo(map_a126f5d9342a811f53c4aa2478d4574f);
+        
+    
+        function geo_json_d46779092cdb543ba42f54e57476727f_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.7, "weight": 2};
+            }
+        }
+
+        function geo_json_d46779092cdb543ba42f54e57476727f_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_d46779092cdb543ba42f54e57476727f = L.geoJson(null, {
+                onEachFeature: geo_json_d46779092cdb543ba42f54e57476727f_onEachFeature,
+            
+                style: geo_json_d46779092cdb543ba42f54e57476727f_styler,
+            ...{
+}
+        });
+
+        function geo_json_d46779092cdb543ba42f54e57476727f_add (data) {
+            geo_json_d46779092cdb543ba42f54e57476727f
+                .addData(data);
+        }
+            geo_json_d46779092cdb543ba42f54e57476727f_add({"features": [{"geometry": {"coordinates": [[[21.0200403174764, 40.84272695572588], [20.605181919037364, 41.086226304685226], [20.463175083099202, 41.51508901627534], [20.59024743010491, 41.855404161133606], [20.590246546680227, 41.855408919283626], [20.52295, 42.21787], [20.283754510181893, 42.32025950781508], [20.0707, 42.58863], [19.801613396898688, 42.50009349219084], [19.73805138517963, 42.68824738216557], [19.304486118250793, 42.19574514420782], [19.37176816334725, 41.877550679783496], [19.37176883309496, 41.877547512370654], [19.540027296637106, 41.71998607031276], [19.40354983895429, 41.40956574153546], [19.319058872157143, 40.72723012955356], [19.406081984136733, 40.250773423822466], [19.960001661873207, 39.91500580500605], [19.980000441170148, 39.69499339452341], [20.15001590341052, 39.62499766698397], [20.615000441172754, 40.11000682225938], [20.674996779063633, 40.43499990494303], [20.999989861747224, 40.58000397395398], [21.0200403174764, 40.84272695572588]]], "type": "Polygon"}, "properties": {"abbrev": "Alb.", "abbrev_len": 4, "adm0_a3": "ALB", "adm0_a3_ar": "ALB", "adm0_a3_bd": "ALB", "adm0_a3_br": "ALB", "adm0_a3_cn": "ALB", "adm0_a3_de": "ALB", "adm0_a3_eg": "ALB", "adm0_a3_es": "ALB", "adm0_a3_fr": "ALB", "adm0_a3_gb": "ALB", "adm0_a3_gr": "ALB", "adm0_a3_id": "ALB", "adm0_a3_il": "ALB", "adm0_a3_in": "ALB", "adm0_a3_it": "ALB", "adm0_a3_jp": "ALB", "adm0_a3_ko": "ALB", "adm0_a3_ma": "ALB", "adm0_a3_nl": "ALB", "adm0_a3_np": "ALB", "adm0_a3_pk": "ALB", "adm0_a3_pl": "ALB", "adm0_a3_ps": "ALB", "adm0_a3_pt": "ALB", "adm0_a3_ru": "ALB", "adm0_a3_sa": "ALB", "adm0_a3_se": "ALB", "adm0_a3_tr": "ALB", "adm0_a3_tw": "ALB", "adm0_a3_ua": "ALB", "adm0_a3_un": -99, "adm0_a3_us": "ALB", "adm0_a3_vn": "ALB", "adm0_a3_wb": -99, "adm0_dif": 0, "adm0_diff": null, "adm0_iso": "ALB", "adm0_tlc": "ALB", "admin": "Albania", "brk_a3": "ALB", "brk_diff": 0, "brk_group": null, "brk_name": "Albania", "continent": "Europe", "economy": "6. Developing region", "fclass_ar": null, "fclass_bd": null, "fclass_br": null, "fclass_cn": null, "fclass_de": null, "fclass_eg": null, "fclass_es": null, "fclass_fr": null, "fclass_gb": null, "fclass_gr": null, "fclass_id": null, "fclass_il": null, "fclass_in": null, "fclass_iso": "Admin-0 country", "fclass_it": null, "fclass_jp": null, "fclass_ko": null, "fclass_ma": null, "fclass_nl": null, "fclass_np": null, "fclass_pk": null, "fclass_pl": null, "fclass_ps": null, "fclass_pt": null, "fclass_ru": null, "fclass_sa": null, "fclass_se": null, "fclass_tlc": "Admin-0 country", "fclass_tr": null, "fclass_tw": null, "fclass_ua": null, "fclass_us": null, "fclass_vn": null, "featurecla": "Admin-0 country", "filename": "ALB.geojson", "fips_10": "AL", "formal_en": "Republic of Albania", "formal_fr": null, "gdp_md": 15279, "gdp_year": 2019, "geou_dif": 0, "geounit": "Albania", "gu_a3": "ALB", "homepart": 1, "income_grp": "4. Lower middle income", "iso_a2": "AL", "iso_a2_eh": "AL", "iso_a3": "ALB", "iso_a3_eh": "ALB", "iso_n3": 8, "iso_n3_eh": 8, "label_x": 20.11384, "label_y": 40.654855, "labelrank": 6, "level": 2, "long_len": 7, "mapcolor13": 6, "mapcolor7": 1, "mapcolor8": 4, "mapcolor9": 1, "max_label": 10, "min_label": 5, "min_zoom": 0, "name": "Albania", "name_alt": null, "name_ar": "\u0623\u0644\u0628\u0627\u0646\u064a\u0627", "name_bn": "\u0986\u09b2\u09ac\u09c7\u09a8\u09bf\u09af\u09bc\u09be", "name_ciawf": "Albania", "name_de": "Albanien", "name_el": "\u0391\u03bb\u03b2\u03b1\u03bd\u03af\u03b1", "name_en": "Albania", "name_es": "Albania", "name_fa": "\u0622\u0644\u0628\u0627\u0646\u06cc", "name_fr": "Albanie", "name_he": "\u05d0\u05dc\u05d1\u05e0\u05d9\u05d4", "name_hi": "\u0905\u0932\u094d\u092c\u093e\u0928\u093f\u092f\u093e", "name_hu": "Alb\u00e1nia", "name_id": "Albania", "name_it": "Albania", "name_ja": "\u30a2\u30eb\u30d0\u30cb\u30a2", "name_ko": "\uc54c\ubc14\ub2c8\uc544", "name_len": 7, "name_long": "Albania", "name_nl": "Albani\u00eb", "name_pl": "Albania", "name_pt": "Alb\u00e2nia", "name_ru": "\u0410\u043b\u0431\u0430\u043d\u0438\u044f", "name_sort": "Albania", "name_sv": "Albanien", "name_tr": "Arnavutluk", "name_uk": "\u0410\u043b\u0431\u0430\u043d\u0456\u044f", "name_ur": "\u0627\u0644\u0628\u0627\u0646\u06cc\u0627", "name_vi": "Albania", "name_zh": "\u963f\u5c14\u5df4\u5c3c\u4e9a", "name_zht": "\u963f\u723e\u5df4\u5c3c\u4e9e", "ne_id": 1159320325, "note_adm0": null, "note_brk": null, "pop_est": 2854191, "pop_rank": 12, "pop_year": 2019, "postal": "AL", "region_un": "Europe", "region_wb": "Europe \u0026 Central Asia", "scalerank": 1, "sov_a3": "ALB", "sovereignt": "Albania", "su_a3": "ALB", "su_dif": 0, "subregion": "Southern Europe", "subunit": "Albania", "tiny": -99, "tlc": "1", "tlc_diff": null, "type": "Sovereign country", "un_a3": 8, "wb_a2": "AL", "wb_a3": "ALB", "wikidataid": "Q222", "woe_id": 23424742, "woe_id_eh": 23424742, "woe_note": "Exact WOE match as country"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_d46779092cdb543ba42f54e57476727f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["name_zh"];
+    let aliases = ["\u56fd\u5bb6\uff1a"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_09d9bd3fa368f90cf8ab369cc1f0031a = L.popup({
+  "maxWidth": 500,
+});
+
+        
+            
+                var i_frame_bbbc3c2eedfb65dba13d9db206146798 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDM+6Zi/5bCU5be05bC85Lqa5rOV5b6L5YiG57G75L+h5oGvPC9oMz48aDQ+56uL5rOV57G75Z6L55u45YWz6Zeu562U77yaPC9oND48cD48c3Ryb25nPumXrumimO+8mjwvc3Ryb25nPuivpeiuvuWkh+WmguS9leWPl+ebkeeuoe+8nzxicj48c3Ryb25nPuWbnuetlO+8mjwvc3Ryb25nPueDn+iNieebuOWFs+S6p+WTge+8iOWmguWwvOWPpOS4geS6p+WTge+8iTwvcD48aHI+PHA+PHN0cm9uZz7pl67popjvvJo8L3N0cm9uZz7or6Xkuqflk4HpgJrluLjlpoLkvZXlj5fnm5HnrqHvvJ88YnI+PHN0cm9uZz7lm57nrZTvvJo8L3N0cm9uZz7ng5/ojYnnm7jlhbPkuqflk4HvvIjlpoLlsLzlj6TkuIHkuqflk4HvvIk8YnI+PHN0cm9uZz7lpIfms6jvvJo8L3N0cm9uZz4yMDE55bm077yM6K+l5Zu95L+u6K6i5LqG44CK54Of6I2J5Yi25ZOB5YGl5bq35L+d5oqk5rOV44CL77yI54Of6I2J5rOV77yJ77yM5bCGJ+eUteWtkOeDnyfnurPlhaXlhbbkuK3igJTigJTor6Xkuqflk4Hlj6/pgJrov4fng5/lmLTmiJblhbbku5bnu4Tku7bvvIjljIXmi6zng5/lvLnjgIHng5/msrnnm5Llj4rkuI3lkKvng5/lvLnmiJbng5/msrnnm5LnmoTorr7lpIfvvInlkLjpo5/lkKvlsLzlj6TkuIHnmoTpm77ljJbmtrLjgILnlLXlrZDng5/lj6/liIbkuLrkuIDmrKHmgKfkuqflk4HvvIzmiJbpgJrov4fooaXlhYXlrrnlmajkuI7lgqjmtrLnvZDlrp7njrDph43lpI3loavlhYXnmoTkuqflk4HvvIzkuqblj6/ph4fnlKjkuIDmrKHmgKfng5/lvLnov5vooYzlhYXnlLXlvI/kvb/nlKjjgII8L3A+PGhyPjxwPjxzdHJvbmc+6Zeu6aKY77yaPC9zdHJvbmc+6Iul5Lqn5ZOB5ZCI5rOV5L2G6ZyA57uP5Li7566h6YOo6Zeo5om55YeG5pa55Y+v5LiK5biC77yM5piv5ZCm5pyJ5bey5oiQ5Yqf6I635om555qE5Lqn5ZOB77yfPGJyPjxzdHJvbmc+5Zue562U77yaPC9zdHJvbmc+5pivPC9wPjxocj48cD48c3Ryb25nPumXrumimO+8mjwvc3Ryb25nPuivpeiuvuWkh+aYr+WQpuWQiOazle+8nzxicj48c3Ryb25nPuWbnuetlO+8mjwvc3Ryb25nPuaYrzwvcD48aHI+PHA+PHN0cm9uZz7pl67popjvvJo8L3N0cm9uZz7or6Xkuqflk4HmmK/lkKblj5fnibnlrprnm5HnrqHvvJ88YnI+PHN0cm9uZz7lm57nrZTvvJo8L3N0cm9uZz7mmK88L3A+PGhyPjxwPjxzdHJvbmc+6Zeu6aKY77yaPC9zdHJvbmc+6K+l5Lqn5ZOB55qE5rOV5b6L5Zyw5L2N5aaC5L2V77yfPGJyPjxzdHJvbmc+5Zue562U77yaPC9zdHJvbmc+5YWB6K64PC9wPjxocj48aDQ+55u45YWz5rOV6KeE5p2l5rqQ77yaPC9oND48cD48c3Ryb25nPuadpea6kOWumOaWueWQjeensO+8mjwvc3Ryb25nPuOAiueDn+iNieWItuWTgeWBpeW6t+S/neaKpOazleOAizxicj48c3Ryb25nPuaPj+i/sOaAp+WQjeensO+8mjwvc3Ryb25nPueDn+iNieazlTxicj48c3Ryb25nPuadpea6kOaRmOimge+8mjwvc3Ryb25nPuivpeazleahiOWvueWQq+WwvOWPpOS4gembvuWMluS6p+WTgeWPiuWKoOeDreeDn+iNieeahOmUgOWUruOAgeagh+ivhuWSjOeUn+S6p+iuvuWumuS6humZkOWItu+8jOWFtuadoeasvuS4juOAiueDn+iNieWItuWTgeaMh+S7pOOAi+eahOiuvuaDs+ebuOi/keOAgjxicj48c3Ryb25nPueKtuaAge+8mjwvc3Ryb25nPuW3sumAmui/h+W5tueUn+aViDxicj48c3Ryb25nPuadpea6kOexu+Wei++8mjwvc3Ryb25nPuazleinhDxicj48c3Ryb25nPumTvuaOpe+8mjwvc3Ryb25nPjxhIGhyZWY9J2h0dHBzOi8vcWJ6Lmdvdi5hbC9wcmV2aWV3L2Q4NjdkYWJmLTJhYzYtNDUzYi05YTUxLTEyZTY2YzhhZGNiMC9jb25zLzIwMjQwODMwJyB0YXJnZXQ9J19ibGFuayc+aHR0cHM6Ly9xYnouZ292LmFsL3ByZXZpZXcvZDg2N2RhYmYtMmFjNi00NTNiLTlhNTEtMTJlNjZjOGFkY2IwL2NvbnMvMjAyNDA4MzA8L2E+PC9wPjxocj4=" width="500" style="border:none !important;" height="600"></iframe>`)[0];
+                popup_09d9bd3fa368f90cf8ab369cc1f0031a.setContent(i_frame_bbbc3c2eedfb65dba13d9db206146798);
+            
+        
+
+        geo_json_d46779092cdb543ba42f54e57476727f.bindPopup(popup_09d9bd3fa368f90cf8ab369cc1f0031a)
+        ;
+
+        
+    
+    
+            geo_json_d46779092cdb543ba42f54e57476727f.addTo(map_a126f5d9342a811f53c4aa2478d4574f);
+        
+</script>
+</html>
